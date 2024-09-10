@@ -16,15 +16,17 @@
 
 ### template regsiter
 
--
-<!-- {
-    "email":"adm6@hotmail.com",
-    "password":"sua_senha",
-    "role":"admin",
-    "nome":"fulano5",
-    "endereco":"rua das camelias",
-    "city":"urumuama",
-    "tel":"123456767"
-} -->
+``` json 
+{
+    "email": "adm6@hotmail.com",
+    "password": "sua_senha",
+    "role": "admin",
+    "nome": "fulano5",
+    "endereco": "rua das camelias",
+    "city": "urumuama",
+    "tel": "123456767"
+}
+
+
 
 
