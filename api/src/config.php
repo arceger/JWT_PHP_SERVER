@@ -12,12 +12,6 @@ $db_name = $_ENV['DB_NAME'];
 $username = $_ENV['DB_USER'];
 $password = $_ENV['DB_PASS'];
 
-// $host = 'localhost';
-// $db_name = 'JPA_USER';
-// $username = 'root';
-// $password = '123@Mudar';
-
-
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db_name", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
