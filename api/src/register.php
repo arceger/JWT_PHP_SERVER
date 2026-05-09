@@ -4,16 +4,16 @@ require_once __DIR__ . '/config.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Recebendo os dados do JSON
+
 $email = $data['email'];
 $password = password_hash($data['password'], PASSWORD_DEFAULT);
-$role = $data['role'];  // Recebendo o papel do usuário no registro
+$role = $data['role'];  
 $nome = $data['nome'];
 $tel = $data['tel'];
 $city = $data['city'];
 $endereco = $data['endereco'];
 
-// Validando o papel do usuário
+
 $validRoles = ['admin', 'tecnico']; 
 if (!in_array($role, $validRoles)) {
     http_response_code(400);
@@ -24,7 +24,6 @@ if (!in_array($role, $validRoles)) {
 try {
     $stmt = $pdo->prepare("INSERT INTO users (email, password, role, nome, tel, city, endereco) VALUES (:email, :password, :role, :nome, :tel, :city, :endereco)");
     
-    // Vinculando os parâmetros
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':password', $password);
     $stmt->bindParam(':role', $role);
@@ -40,8 +39,8 @@ try {
         throw new Exception("Falha ao registrar usuário.");
     }
 } catch (PDOException $e) {
-    // Verifica se o erro é de duplicação de chave única
-    if ($e->getCode() == 23000) { // Código de erro SQL para duplicação de entrada
+    
+    if ($e->getCode() == 23000) { 
         http_response_code(409);
         echo json_encode(["message" => "Email ja registrado."]);
     } else {
